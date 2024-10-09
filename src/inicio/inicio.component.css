@@ -1,0 +1,14 @@
+/* inicio.component.css */
+.inicio {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .inicio h1 {
+    font-size: 2.5em;
+  }
+  
+  .inicio p {
+    font-size: 1.2em;
+  }
+  

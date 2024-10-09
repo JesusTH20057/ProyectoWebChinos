@@ -1,0 +1,49 @@
+<!-- pago.component.html -->
+<section class="pago">
+    <h2>Proceso de Pago</h2>
+    <form (ngSubmit)="procesarPago()">
+      <div>
+        <label for="nombre">Nombre en la Tarjeta</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="datosPago.nombre"
+          required
+        />
+      </div>
+      <div>
+        <label for="numero">Número de Tarjeta</label>
+        <input
+          type="text"
+          id="numero"
+          name="numero"
+          [(ngModel)]="datosPago.numero"
+          required
+        />
+      </div>
+      <div>
+        <label for="expiracion">Fecha de Expiración</label>
+        <input
+          type="text"
+          id="expiracion"
+          name="expiracion"
+          placeholder="MM/AA"
+          [(ngModel)]="datosPago.expiracion"
+          required
+        />
+      </div>
+      <div>
+        <label for="cvv">CVV</label>
+        <input
+          type="text"
+          id="cvv"
+          name="cvv"
+          [(ngModel)]="datosPago.cvv"
+          required
+        />
+      </div>
+      <button type="submit">Pagar</button>
+    </form>
+  </section>
+  

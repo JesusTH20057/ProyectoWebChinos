@@ -1,0 +1,14 @@
+<!-- catalogo.component.html -->
+<section class="catalogo">
+    <h2>Nuestro Catálogo</h2>
+    <div class="productos">
+      <div class="producto" *ngFor="let item of productos">
+        <img [src]="item.imagen" [alt]="item.nombre" />
+        <h3>{{ item.nombre }}</h3>
+        <p>{{ item.descripcion }}</p>
+        <!-- <p>Precio: {{ item.precio | currency:'USD' }}</p> -->
+        <button (click)="agregarAlCarrito(item)">Agregar al Carrito</button>
+      </div>
+    </div>
+  </section>
+  
