@@ -9,5 +9,4 @@ import { Component } from '@angular/core';
   standalone: true
 })
 export class HeaderComponent {
-  // Add any necessary logic here
 }

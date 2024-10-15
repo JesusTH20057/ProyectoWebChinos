@@ -1,5 +1,5 @@
 // app.routes.ts
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from '../inicio/inicio.component';
 import { CatalogoComponent } from '../catalogo/catalogo.component';
 import { NosotrosComponent } from '../nosotros/nosotros.component';
