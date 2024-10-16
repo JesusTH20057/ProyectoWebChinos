@@ -1,0 +1,50 @@
+/* Fondo con gradiente que cubre toda la pantalla */
+body {
+    margin: 0;
+    background: linear-gradient(to bottom, #1c1c1c, #333333); /* De negro a gris oscuro */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .nosotros {
+    color: white;
+    padding: 40px 20px; /* Espaciado interno para que no quede pegado */
+  }
+  
+  .container {
+    max-width: 1000px;
+    margin: 0 auto; /* Centrado horizontal */
+    text-align: center; /* Texto centrado */
+  }
+  
+  .nosotros h2 {
+    color: #ff5733; /* Naranja vibrante para el título */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Sombra al texto para resaltarlo */
+  }
+  
+  .nosotros p, .nosotros address {
+    font-size: 1.2em; /* Texto más grande y legible */
+    line-height: 1.8; /* Espacio entre líneas para mejorar la lectura */
+  }
+  
+  .nosotros address {
+    font-style: normal; /* Normaliza el estilo del texto */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo transparente sutil */
+    padding: 10px;
+    border-left: 4px solid #ff5733; /* Borde a la izquierda */
+    margin: 20px 0;
+  }
+  
+  .nosotros strong {
+    color: #ffd700; /* Dorado para destacar el nombre */
+    font-size: 1.3em; /* Más grande */
+  }
+  
+  /* Añadir una sombra sutil y un borde en la parte inferior para darle dinamismo */
+  .nosotros p {
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Sombra para texto */
+  }
+  
+  
