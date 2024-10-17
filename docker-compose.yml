@@ -1,51 +1,18 @@
-# Remove the version line
-# .version: '3.9'
+# docker-compose.yml
 
-# Uncomment and define the shared network
-networks:
-  shared_network:
-    external: true
+version: '3.9'
 
 services:
-  web:
-    build:
-      context: .
+  php-apache:
+    build: .
     container_name: php7_apache_container
     ports:
       - "8082:80"
     volumes:
-      - .:/var/www/html
-      # Uncomment if needed
-      # - ./apache-config.conf:/etc/apache2/sites-enabled/000-default.conf
-      # - ./php.ini:/usr/local/etc/php/php.ini
-      # - shared_images:/var/www/html/images/promociones
-
-  # pgadmin4:
-  #   image: dpage/pgadmin4
-  #   ports:
-  #     - "8083:80"
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: webmaster@grupoastral.com.mx
-  #     PGADMIN_DEFAULT_PASSWORD: victor123456
-  #   networks:
-  #     - shared_network
-
-  # crud-service:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   container_name: crud_php_apache_container
-  #   ports:
-  #     - "8084:80"
-  #   volumes:
-  #     - ./crud-app:/var/www/html
-  #     # - ./apache-config-crud.conf:/etc/apache2/sites-enabled/000-default.conf
-  #     # - ./php.ini:/usr/local/etc/php/php.ini
-  #   environment:
-  #     DB_HOST: postgres
-  #     DB_PORT: 5432
-  #     DB_NAME: cars
-  #     DB_USER: system
-  #     DB_PASSWORD: admin123
-  #   networks:
-  #     - shared_network
+      - ./php:/var/www/html/backend   # PHP backend files
+      # Remove the frontend volume mapping if not needed for development
+      # - ./dist/web:/var/www/html      # Angular build files and frontend assets
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
+    restart: unless-stopped
