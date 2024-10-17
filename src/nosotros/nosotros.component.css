@@ -1,50 +1,136 @@
-/* Fondo con gradiente que cubre toda la pantalla */
+/* Estilos generales para el fondo */
 body {
-    margin: 0;
-    background: linear-gradient(to bottom, #1c1c1c, #333333); /* De negro a gris oscuro */
-    font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1c1c1c, #f04d23); /* Degradado negro a rojo/naranja */
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Estilo para la sección "nosotros" */
+.nosotros {
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 800px;
+  text-align: center;
+  color: #f0f0f0;
+  animation: fadeSlideIn 1.8s ease-in-out; /* Nueva animación */
+}
+
+/* Nueva animación de entrada para la sección */
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
   }
-  
-  .nosotros {
-    color: white;
-    padding: 40px 20px; /* Espaciado interno para que no quede pegado */
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .container {
-    max-width: 1000px;
-    margin: 0 auto; /* Centrado horizontal */
-    text-align: center; /* Texto centrado */
+}
+
+/* Estilo para el título */
+.nosotros h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  color: #ffeb3b; /* Amarillo/dorado para resaltar el título */
+  text-transform: uppercase;
+  animation: popIn 1.5s ease-out;
+}
+
+/* Animación para el título */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
   }
-  
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Estilo para los párrafos */
+.nosotros p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+  line-height: 1.8;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeUp 1.5s ease-in-out;
+}
+
+/* Animación para los párrafos */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo para la dirección */
+address {
+  font-style: normal;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  animation: slideInLeft 1.7s ease-in-out;
+}
+
+/* Nueva animación para la dirección */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Enlaces en la dirección (si se agregan en el futuro) */
+address a {
+  color: #4caf50; /* Enlaces en verde */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+address a:hover {
+  color: #ffeb3b; /* Hover amarillo/dorado */
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
   .nosotros h2 {
-    color: #ff5733; /* Naranja vibrante para el título */
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Sombra al texto para resaltarlo */
+    font-size: 2rem;
   }
-  
-  .nosotros p, .nosotros address {
-    font-size: 1.2em; /* Texto más grande y legible */
-    line-height: 1.8; /* Espacio entre líneas para mejorar la lectura */
-  }
-  
-  .nosotros address {
-    font-style: normal; /* Normaliza el estilo del texto */
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo transparente sutil */
-    padding: 10px;
-    border-left: 4px solid #ff5733; /* Borde a la izquierda */
-    margin: 20px 0;
-  }
-  
-  .nosotros strong {
-    color: #ffd700; /* Dorado para destacar el nombre */
-    font-size: 1.3em; /* Más grande */
-  }
-  
-  /* Añadir una sombra sutil y un borde en la parte inferior para darle dinamismo */
+
   .nosotros p {
-    margin-bottom: 15px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Sombra para texto */
+    font-size: 1rem;
   }
+
+  address {
+    font-size: 1rem;
+  }
+}
+
+
   
   

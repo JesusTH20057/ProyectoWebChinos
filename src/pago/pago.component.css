@@ -1,0 +1,103 @@
+/* Estilos generales para la sección de pago */
+.pago {
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 600px; /* Ancho máximo del formulario */
+    background: rgba(28, 28, 28, 0.9); /* Fondo con un poco de transparencia */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
+    color: #fff; /* Texto blanco */
+    text-align: center; /* Centrar texto en el contenedor */
+    animation: fadeIn 1s ease-in; /* Animación de entrada */
+  }
+  
+  /* Animación de entrada para la sección */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Estilo para el título */
+  .pago h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #ffeb3b; /* Título en amarillo/dorado */
+    letter-spacing: 1px;
+  }
+  
+  /* Estilo del formulario */
+  .pago form {
+    display: flex;
+    flex-direction: column; /* Alineación vertical de los campos */
+  }
+  
+  /* Estilo para los inputs */
+  .pago input {
+    padding: 13px;
+    margin-bottom: 20px;
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #333; /* Fondo gris oscuro */
+    color: #fff; /* Texto blanco */
+    font-size: 1rem;
+    transition: border 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+    width: 100%; /* Ocupa el ancho completo */
+    box-sizing: border-box; /* Incluye padding en el ancho */
+  }
+  
+  /* Estilo para los inputs en hover */
+  .pago input:focus {
+    outline: none; /* Sin contorno */
+    border: 2px solid #ffeb3b; /* Borde amarillo/dorado al enfocar */
+    box-shadow: 0 0 10px rgba(255, 235, 59, 0.5); /* Sombra amarilla */
+  }
+  
+  /* Estilo para los labels */
+  .pago label {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    color: #f0f0f0; /* Texto en blanco para los labels */
+    text-align: left; /* Alinear texto a la izquierda */
+  }
+  
+  /* Estilo para el botón de enviar */
+  .pago button {
+    padding: 15px;
+    background-color: #f04d23; /* Botón rojo/naranja */
+    color: #fff; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1.2rem;
+    cursor: pointer; /* Cambiar cursor a puntero */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+    width: 100%; /* Ocupa el ancho completo */
+  }
+  
+  /* Efecto hover para el botón */
+  .pago button:hover {
+    background-color: #c43b1b; /* Efecto hover */
+    transform: translateY(-2px); /* Levantar el botón */
+  }
+  
+  /* Estilos para dispositivos móviles */
+  @media (max-width: 768px) {
+    .pago h2 {
+      font-size: 2rem;
+    }
+  
+    .pago input {
+      font-size: 0.9rem; /* Ajustar tamaño del texto */
+    }
+  
+    .pago button {
+      font-size: 1rem; /* Ajustar tamaño del texto del botón */
+    }
+  }
+  
+  
