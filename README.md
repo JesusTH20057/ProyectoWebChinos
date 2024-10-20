@@ -4,3 +4,7 @@
 
 para que funcione las rutas tienes que cambiar esta linea: en dist/web/browser/index.html
   <base href="/browser">
+
+
+postgres:
+psql -U admin -d gymstore
