@@ -1,3 +1,11 @@
-
+/* app.component.css */
+.container {
+    background: linear-gradient(135deg, #1c1c1c, #f04d23);
+    min-height: 100vh;
+    color: white;
+    padding: 20px;
+  }
+  
+  
   
   
