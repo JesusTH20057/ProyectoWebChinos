@@ -14,7 +14,7 @@ try {
     // Configurar el modo de error a excepción para facilitar la depuración
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Consulta SQL para obtener productos con su categoría y marca
+    // Consulta SQL para obtener productos con su categoría, marca y URL de la imagen
     $sql = "SELECT 
                 p.ProductoID, 
                 p.NombreProducto, 
@@ -26,10 +26,12 @@ try {
                 p.Ancho, 
                 p.Profundidad, 
                 c.NombreCategoria, 
-                m.NombreMarca
+                m.NombreMarca,
+                ip.URLImagen
             FROM Productos p
             JOIN Categorias c ON p.CategoriaID = c.CategoriaID
-            JOIN Marcas m ON p.MarcaID = m.MarcaID";
+            JOIN Marcas m ON p.MarcaID = m.MarcaID
+            LEFT JOIN ImagenesProducto ip ON p.ProductoID = ip.ProductoID";
 
     // Preparar y ejecutar la consulta SQL
     $stmt = $pdo->prepare($sql);

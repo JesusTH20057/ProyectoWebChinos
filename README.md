@@ -7,7 +7,6 @@
 ### Rutas y etiquetas base en HTML
 
 si no se ve la pagina cambia esto en dist/index.html
-
 html
 <base href="/browser">
 
