@@ -7,35 +7,45 @@ $pass = getenv('POSTGRES_PASSWORD');
 $port = '5432'; 
 
 try {
-    // Create a new PDO instance
+    // Crear una nueva instancia de PDO
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
     $pdo = new PDO($dsn, $user, $pass);
 
-    // Set error mode to exception for easier debugging
+    // Configurar el modo de error a excepción para facilitar la depuración
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // SQL query to fetch products with their category and brand (if you want to include related tables)
-    $sql = "SELECT p.ProductoID, p.NombreProducto, p.Descripcion, p.Precio, 
-                   p.Materiales, p.Peso, p.Altura, p.Ancho, p.Profundidad, 
-                   c.NombreCategoria, m.NombreMarca
+    // Consulta SQL para obtener productos con su categoría y marca
+    $sql = "SELECT 
+                p.ProductoID, 
+                p.NombreProducto, 
+                p.Descripcion, 
+                p.Precio, 
+                p.Materiales, 
+                p.Peso, 
+                p.Altura, 
+                p.Ancho, 
+                p.Profundidad, 
+                c.NombreCategoria, 
+                m.NombreMarca
             FROM Productos p
             JOIN Categorias c ON p.CategoriaID = c.CategoriaID
             JOIN Marcas m ON p.MarcaID = m.MarcaID";
 
-    // Prepare and execute the SQL query
-    $stmt = $pdo->query($sql);
+    // Preparar y ejecutar la consulta SQL
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
 
-    // Fetch all the rows as an associative array
+    // Obtener todas las filas como un arreglo asociativo
     $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Set the Content-Type header to application/json
+    // Establecer el encabezado Content-Type a application/json
     header('Content-Type: application/json');
 
-    // Output the result as JSON
+    // Salida del resultado como JSON
     echo json_encode($productos);
 
 } catch (PDOException $e) {
-    // Catch and display the error
-    echo json_encode(["error" => "Connection failed: " . $e->getMessage()]);
+    // Capturar y mostrar el error
+    echo json_encode(["error" => "Conexión fallida: " . $e->getMessage()]);
 }
 ?>
