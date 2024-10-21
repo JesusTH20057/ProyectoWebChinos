@@ -6,30 +6,29 @@
 ```
 ### Rutas y etiquetas base en HTML
 
-Si necesitas ajustar el archivo `index.html`, usa la siguiente etiqueta de base en el archivo para definir rutas relativas:
+si no se ve la pagina cambia esto en dist/index.html
 
 html
 <base href="/browser">
 
-remover todos los volumenes: docker system prune -a --volumes
+### Comandos para manejar Docker
 
-remover contenedor: docker-compose down
 
-mostrar volumenes: docker volume ls
+   remover todos los volumenes: docker system prune -a --volumes
 
-remover docker volume docker volume rm proyectowebchinos_pgdata
+   remover contenedor: docker-compose down
 
-postgres: psql -U admin -d gymstore
+   mostrar volumenes: docker volume ls
 
-mostrar tablas \dt
+   remover docker volume docker volume rm proyectowebchinos_pgdata
 
-env creds in docker composer
+   postgres: psql -U admin -d gymstore
+
+   mostrar tablas \dt
+
+   env creds in docker composer
 
 ---
 
-### Comandos para manejar Docker
 
-1. **Remover todos los volúmenes y datos inactivos:**
 
-   ```bash
-   docker system prune -a --volumes

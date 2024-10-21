@@ -14,8 +14,16 @@ try {
     // Set error mode to exception for easier debugging
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    // SQL query to fetch products with their category and brand (if you want to include related tables)
+    $sql = "SELECT p.ProductoID, p.NombreProducto, p.Descripcion, p.Precio, 
+                   p.Materiales, p.Peso, p.Altura, p.Ancho, p.Profundidad, 
+                   c.NombreCategoria, m.NombreMarca
+            FROM Productos p
+            JOIN Categorias c ON p.CategoriaID = c.CategoriaID
+            JOIN Marcas m ON p.MarcaID = m.MarcaID";
+
     // Prepare and execute the SQL query
-    $stmt = $pdo->query("SELECT * FROM Producto");
+    $stmt = $pdo->query($sql);
 
     // Fetch all the rows as an associative array
     $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
