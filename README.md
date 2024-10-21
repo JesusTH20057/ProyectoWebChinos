@@ -6,22 +6,20 @@ para que funcione las rutas tienes que cambiar esta linea: en dist/web/browser/i
   <base href="/browser">
 
 
-remover todos los volumenes:
-docker system prune -a --volumes
+# Proyecto Web - Instrucciones de Docker y PostgreSQL
 
-remover contenedor:
-docker-compose down
+### Actualizar el archivo de rutas en Angular
 
-mostrar volumenes:
-docker volume ls   
+Para que las rutas funcionen correctamente en Angular, debes realizar el siguiente cambio:
 
-remover docker volume
-docker volume rm proyectowebchinos_pgdata
+1. Edita el archivo `dist/web/browser/index.html`.
+2. Asegúrate de que no haya errores de rutas comentando o ajustando las rutas incorrectas que puedan causar problemas.
 
-postgres:
-psql -U admin -d gymstore
+---
 
-mostrar tablas 
-\dt
+### Comandos para manejar Docker
 
-env creds in docker composer
+1. **Remover todos los volúmenes y datos inactivos:**
+
+   ```bash
+   docker system prune -a --volumes
