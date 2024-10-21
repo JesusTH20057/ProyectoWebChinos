@@ -2,18 +2,28 @@
 
 ![](https://media1.tenor.com/m/dglU4dQtm-QAAAAC/anime-guitar.gif)
 
-para que funcione las rutas tienes que cambiar esta linea: en dist/web/browser/index.html
-  <base href="/browser">
+# Proyecto Web
+```
+### Rutas y etiquetas base en HTML
 
+Si necesitas ajustar el archivo `index.html`, usa la siguiente etiqueta de base en el archivo para definir rutas relativas:
 
-# Proyecto Web - Instrucciones de Docker y PostgreSQL
+html
+<base href="/browser">
 
-### Actualizar el archivo de rutas en Angular
+remover todos los volumenes: docker system prune -a --volumes
 
-Para que las rutas funcionen correctamente en Angular, debes realizar el siguiente cambio:
+remover contenedor: docker-compose down
 
-1. Edita el archivo `dist/web/browser/index.html`.
-2. Asegúrate de que no haya errores de rutas comentando o ajustando las rutas incorrectas que puedan causar problemas.
+mostrar volumenes: docker volume ls
+
+remover docker volume docker volume rm proyectowebchinos_pgdata
+
+postgres: psql -U admin -d gymstore
+
+mostrar tablas \dt
+
+env creds in docker composer
 
 ---
 
