@@ -14,9 +14,13 @@ services:
       - POSTGRES_DB=gymstore
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=chinos123
+      - STRIPE_SECRET_KEY=your_stripe_secret_key
+      - STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
     depends_on:
       - postgres
     restart: unless-stopped
+    env_file:
+      - .env
 
   postgres:
     image: postgres:13
@@ -34,3 +38,6 @@ services:
 
 volumes:
   pgdata:
+
+# STRIPE_SECRET_KEY=your_stripe_secret_key
+# STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
