@@ -1,7 +1,8 @@
-// catalogo.component.ts
+// src/app/catalogo/catalogo.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../carrito/cart.service'; 
 
 interface Producto {
   id: number;
@@ -13,14 +14,14 @@ interface Producto {
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [CommonModule], // No need to import HttpClientModule
+  imports: [CommonModule],
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit {
-  productos: Producto[] = []; // Define the productos property
+  productos: Producto[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cartService: CartService) {} // Inject CartService
 
   ngOnInit() {
     console.log('CatalogoComponent initialized');
@@ -46,6 +47,6 @@ export class CatalogoComponent implements OnInit {
   }
 
   agregarAlCarrito(producto: Producto) {
-    console.log(`Producto agregado: ${producto.nombre}`);
+    this.cartService.addToCart(producto); // Use CartService to add product
   }
 }

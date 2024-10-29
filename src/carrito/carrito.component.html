@@ -1,0 +1,23 @@
+<!-- //carrito.component.html -->
+
+<!-- src/app/carrito/carrito.component.html -->
+<div class="cart-container">
+    <h2>Carrito de Compras</h2>
+    <div *ngIf="(cartItems$ | async)?.length; else emptyCart">
+      <ul>
+        <li *ngFor="let producto of cartItems$ | async">
+          <img [src]="producto.imagen" alt="{{ producto.nombre }}" width="50" />
+          <span>{{ producto.nombre }}</span>
+          <span>{{ producto.precio | currency }}</span>
+          <button (click)="removeFromCart(producto.id)">Eliminar</button>
+        </li>
+      </ul>
+      <h3>Total: {{ total | currency }}</h3>
+      <button (click)="clearCart()">Vaciar Carrito</button>
+      <button routerLink="/pago">Proceder al Pago</button>
+    </div>
+    <ng-template #emptyCart>
+      <p>Tu carrito está vacío.</p>
+    </ng-template>
+  </div>
+  
