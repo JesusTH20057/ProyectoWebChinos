@@ -1,6 +1,11 @@
-<div class="producto" *ngFor="let producto of productos">
-  <img [src]="producto.imagen" alt="{{ producto.nombre }}">
-  <h3>{{ producto.nombre }}</h3>
-  <p>Precio: {{ producto.precio }}</p>
-  <button (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+<!-- catalogo.component.html -->
+<div class="catalogo-container">
+  <div class="producto" *ngFor="let producto of productos">
+    <img [src]="producto.imagen" alt="{{ producto.nombre }}">
+    <div class="producto-details">
+      <h3>{{ producto.nombre }}</h3>
+      <p>Precio: {{ producto.precio | currency }}</p>
+      <button (click)="agregarAlCarrito(producto)">Agregar al carrito</button>
+    </div>
+  </div>
 </div>

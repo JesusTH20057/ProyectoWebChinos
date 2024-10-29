@@ -1,31 +1,31 @@
 /* catalogo.component.css */
 
-/* catalogo.component.css */
-
 /* Root Variables for Consistent Styling */
 :root {
     --color-primary: #3b82f6; /* Tailwind's blue-500 */
     --color-primary-dark: #1e40af; /* Tailwind's blue-800 */
     --color-secondary: #6b7280; /* Tailwind's gray-500 */
-    --color-background: #ffffff; /* White */
+    --color-background: #d1bebe; 
     --color-text: #111827; /* Tailwind's gray-900 */
     --color-border: #e5e7eb; /* Tailwind's gray-200 */
     --color-button-hover: #2563eb; /* Tailwind's blue-600 */
     --color-button-text: #ffffff; /* White */
     --transition-duration: 200ms;
-  }
-  
-  /* Container for the Catalog */
-  .catalogo-container {
+}
+
+/* Container for the Catalog */
+.catalogo-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
     padding: 2rem;
     background-color: var(--color-background);
-  }
-  
-  /* Individual Product Card */
-  .producto {
+    max-width: 1200px; /* Limit the maximum width for larger screens */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Individual Product Card */
+.producto {
     background-color: var(--color-background);
     border: 1px solid var(--color-border);
     border-radius: 0.5rem; /* Tailwind's rounded-lg */
@@ -34,47 +34,48 @@
     display: flex;
     flex-direction: column;
     transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
-  }
-  
-  /* Hover Effect for Product Card */
-  .producto:hover {
+    background-color: #3a08cf; /* Slight background color for better contrast */
+}
+
+/* Hover Effect for Product Card */
+.producto:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); /* Tailwind's shadow-lg */
-  }
-  
-  /* Product Image */
-  .producto img {
+}
+
+/* Product Image */
+.producto img {
     width: 100%;
     height: 180px;
     object-fit: cover;
-  }
-  
-  /* Product Details */
-  .producto-details {
+}
+
+/* Product Details */
+.producto-details {
     padding: 1rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-  }
-  
-  /* Product Name */
-  .producto-details h3 {
+}
+
+/* Product Name */
+.producto-details h3 {
     font-size: 1.25rem; /* Tailwind's text-xl */
     font-weight: 600; /* Tailwind's font-semibold */
     color: var(--color-text);
     margin-bottom: 0.5rem;
-  }
-  
-  /* Product Price */
-  .producto-details p {
+}
+
+/* Product Price */
+.producto-details p {
     font-size: 1rem; /* Tailwind's text-base */
     color: var(--color-secondary);
     margin-bottom: 1rem;
     flex-grow: 1;
-  }
-  
-  /* Add to Cart Button */
-  .producto-details button {
+}
+
+/* Add to Cart Button */
+.producto-details button {
     background-color: var(--color-primary);
     color: var(--color-button-text);
     border: none;
@@ -85,31 +86,78 @@
     cursor: pointer;
     transition: background-color var(--transition-duration) ease;
     text-align: center;
-  }
-  
-  /* Hover Effect for Button */
-  .producto-details button:hover {
+}
+
+/* Hover Effect for Button */
+.producto-details button:hover {
     background-color: var(--color-button-hover);
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
     .catalogo-container {
-      padding: 1rem;
-      gap: 1rem;
+        padding: 1rem;
+        gap: 1rem;
     }
-  
+
     .producto img {
-      height: 150px;
+        height: 150px;
     }
-  
+
     .producto-details h3 {
-      font-size: 1.125rem; /* Tailwind's text-lg */
+        font-size: 1.125rem; /* Tailwind's text-lg */
     }
-  
+
     .producto-details button {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.875rem; /* Tailwind's text-sm */
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem; /* Tailwind's text-sm */
     }
-  }
-  
+}
+
+/* Additional Styles for Larger Screens */
+@media (min-width: 1024px) {
+    .catalogo-container {
+        padding: 3rem;
+        gap: 2rem;
+    }
+
+    .producto img {
+        height: 200px;
+    }
+
+    .producto-details h3 {
+        font-size: 1.5rem; /* Larger font for PC */
+    }
+
+    .producto-details p {
+        font-size: 1.125rem; /* Slightly larger price text */
+    }
+
+    .producto-details button {
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+    }
+}
+
+.producto {
+    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slightly more pronounced shadow */
+}
+
+.producto-details button {
+    transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
+}
+
+.producto-details button:hover {
+    background-color: var(--color-button-hover);
+    transform: scale(1.05); /* Slight scale on hover for button */
+}
+/* Focus States */
+.producto-details button:focus {
+    outline: 2px solid var(--color-primary-dark);
+    outline-offset: 2px;
+}
