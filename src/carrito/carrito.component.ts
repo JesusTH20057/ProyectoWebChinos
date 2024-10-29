@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../carrito/cart.service'; 
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router'; // Ensure RouterLink is imported
 
 interface Producto {
   id: number;
@@ -14,7 +15,7 @@ interface Producto {
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink], // Add RouterLink here
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.css']
 })

@@ -1,0 +1,16 @@
+{
+    "name": "chinos/chinosgym",
+    "description": "web2",
+    "type": "project",
+    "require": {
+        "stripe/stripe-php": "^10.0",
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require-dev": {
+    }
+}
