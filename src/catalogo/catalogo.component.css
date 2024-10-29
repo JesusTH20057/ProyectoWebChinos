@@ -1,0 +1,115 @@
+/* catalogo.component.css */
+
+/* catalogo.component.css */
+
+/* Root Variables for Consistent Styling */
+:root {
+    --color-primary: #3b82f6; /* Tailwind's blue-500 */
+    --color-primary-dark: #1e40af; /* Tailwind's blue-800 */
+    --color-secondary: #6b7280; /* Tailwind's gray-500 */
+    --color-background: #ffffff; /* White */
+    --color-text: #111827; /* Tailwind's gray-900 */
+    --color-border: #e5e7eb; /* Tailwind's gray-200 */
+    --color-button-hover: #2563eb; /* Tailwind's blue-600 */
+    --color-button-text: #ffffff; /* White */
+    --transition-duration: 200ms;
+  }
+  
+  /* Container for the Catalog */
+  .catalogo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: var(--color-background);
+  }
+  
+  /* Individual Product Card */
+  .producto {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem; /* Tailwind's rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-md */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+  }
+  
+  /* Hover Effect for Product Card */
+  .producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15); /* Tailwind's shadow-lg */
+  }
+  
+  /* Product Image */
+  .producto img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  /* Product Details */
+  .producto-details {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Product Name */
+  .producto-details h3 {
+    font-size: 1.25rem; /* Tailwind's text-xl */
+    font-weight: 600; /* Tailwind's font-semibold */
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Product Price */
+  .producto-details p {
+    font-size: 1rem; /* Tailwind's text-base */
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+  }
+  
+  /* Add to Cart Button */
+  .producto-details button {
+    background-color: var(--color-primary);
+    color: var(--color-button-text);
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem; /* Tailwind's rounded-md */
+    font-size: 1rem; /* Tailwind's text-base */
+    font-weight: 500; /* Tailwind's font-medium */
+    cursor: pointer;
+    transition: background-color var(--transition-duration) ease;
+    text-align: center;
+  }
+  
+  /* Hover Effect for Button */
+  .producto-details button:hover {
+    background-color: var(--color-button-hover);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .catalogo-container {
+      padding: 1rem;
+      gap: 1rem;
+    }
+  
+    .producto img {
+      height: 150px;
+    }
+  
+    .producto-details h3 {
+      font-size: 1.125rem; /* Tailwind's text-lg */
+    }
+  
+    .producto-details button {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem; /* Tailwind's text-sm */
+    }
+  }
+  

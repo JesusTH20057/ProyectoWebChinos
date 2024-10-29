@@ -13,7 +13,6 @@ export const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'pago', component: PagoComponent },
   { path: 'terminos', component: TerminosComponent },
-  { path: '', component: TerminosComponent },
 
   { path: '**', redirectTo: '' } // Redirect unknown routes to home
 ];

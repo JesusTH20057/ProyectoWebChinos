@@ -1,5 +1,8 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+
 $host = 'postgres'; 
 $dbname = getenv('POSTGRES_DB'); 
 $user = getenv('POSTGRES_USER'); 
