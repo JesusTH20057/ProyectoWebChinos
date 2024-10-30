@@ -1,0 +1,73 @@
+/* Contenedor principal */
+.terms-conditions {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9; /* Fondo claro para mejor legibilidad */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333; /* Color de texto oscuro */
+  }
+  
+  /* Encabezado principal */
+  .terms-conditions h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a1a1a; /* Color oscuro para el encabezado principal */
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Encabezados de secciones */
+  .terms-conditions h2 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 2rem;
+    border-bottom: 2px solid #e0e0e0; /* Línea de separación sutil */
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Subtítulos */
+  .terms-conditions h3 {
+    font-size: 20px;
+    color: #555;
+    margin-top: 1.5rem;
+  }
+  
+  /* Párrafos */
+  .terms-conditions p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4d4d4d;
+    margin-bottom: 1rem;
+  }
+  
+  /* Lista */
+  .terms-conditions ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .terms-conditions ul li {
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    color: #4d4d4d;
+  }
+  
+  /* Enlaces */
+  .terms-conditions a {
+    color: #007bff; /* Color azul para enlaces */
+    text-decoration: none;
+  }
+  
+  .terms-conditions a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Resalta subtítulos con énfasis */
+  .terms-conditions strong {
+    color: #333;
+  }
+  

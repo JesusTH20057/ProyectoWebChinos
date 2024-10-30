@@ -1,53 +1,77 @@
 /* src/app/pago/pago.component.css */
 
-.success-message {
-  background-color: #d4edda;
-  color: #155724;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 20px;
+.pago {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #2b2b2b; /* Fondo oscuro */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #ffffff; /* Texto en blanco */
 }
 
-.error-message {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 20px;
+.pago h2 {
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-.error {
-  color: #dc3545;
-  font-size: 0.875em;
-}
-
-#card-element {
-  border: 1px solid #ced4da;
-  padding: 10px;
-  border-radius: 4px;
-  margin-top: 5px;
-}
-
-#card-errors {
-  margin-top: 5px;
-}
-
-form div {
-  margin-bottom: 15px;
-}
-
-form label {
+.pago label {
   display: block;
-  margin-bottom: 5px;
+  font-size: 16px;
+  color: #f0f0f0; /* Color de texto */
+  margin-bottom: 0.5rem;
 }
 
-form input {
+.pago input[type="text"],
+#card-element {
   width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #444444; /* Borde gris oscuro */
+  border-radius: 4px;
+  background-color: #333333; /* Fondo de input */
+  color: #ffffff;
+  margin-bottom: 1rem;
 }
 
-form button {
-  padding: 10px 20px;
+.pago button {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #e60023; /* Botón rojo vibrante */
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+.pago button:disabled {
+  background-color: #a6a6a6; /* Color gris para estado deshabilitado */
+  cursor: not-allowed;
+}
+
+.pago button:hover:not(:disabled) {
+  background-color: #b3001b; /* Color más oscuro en hover */
+}
+
+.success-message,
+.error-message {
+  background-color: #444444;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.success-message p {
+  color: #76ff03; /* Verde para éxito */
+}
+
+.error-message p {
+  color: #ff5252; /* Rojo claro para error */
+}
+
