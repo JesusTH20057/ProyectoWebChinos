@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { Stripe, StripeCardElement } from '@stripe/stripe-js';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { CommonModule } from '@angular/common'; // Import CommonModule
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSnackBar
+import { ReceiptService } from '../recibo_service/reciboService'; // Import ReceiptService
 
 interface Producto {
   id: number;
@@ -20,7 +22,7 @@ interface Producto {
   templateUrl: './pago.component.html',
   styleUrls: ['./pago.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule], // Add CommonModule here
+  imports: [FormsModule, CommonModule, MatSnackBarModule]
 })
 export class PagoComponent implements OnInit, AfterViewInit {
   datosPago = {
@@ -39,7 +41,9 @@ export class PagoComponent implements OnInit, AfterViewInit {
   constructor(
     private stripeService: StripeService,
     private cartService: CartService,
-    private router: Router
+    private receiptService: ReceiptService, // Inject ReceiptService
+    private router: Router,
+    private snackBar: MatSnackBar // Inject MatSnackBar
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -71,6 +75,7 @@ export class PagoComponent implements OnInit, AfterViewInit {
     }
   }
 
+  
   async procesarPago(event: Event) {
     event.preventDefault();
 
@@ -127,7 +132,28 @@ export class PagoComponent implements OnInit, AfterViewInit {
           // Pago exitoso
           this.paymentSuccess = true;
           console.log('Pago exitoso:', result.paymentIntent);
+
+          // Map `Producto` to `ReceiptItem`
+          const receiptItems = this.cartItems.map(item => ({
+            id: item.id,
+            nombre: item.nombre,
+            precio: item.precio,
+            cantidad: 1 || 1,
+          }));
+
+          // Generar Recibo
+          this.receiptService.generateReceipt(receiptItems, this.total);
+
+          this.snackBar.open('Pago exitoso! Recibo descargado.', 'Cerrar', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            panelClass: ['snackbar-success'],
+          });
+
+          // Limpiar Carrito
           this.cartService.clearCart();
+
           this.isProcessing = false;
         }
       }
@@ -137,6 +163,7 @@ export class PagoComponent implements OnInit, AfterViewInit {
       this.isProcessing = false;
     }
   }
+
 
   // Método público para navegar al inicio
   volverAlInicio(): void {

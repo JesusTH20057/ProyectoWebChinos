@@ -13,6 +13,18 @@
     --transition-duration: 200ms;
 }
 
+/* src/styles.css */
+
+.snackbar-success {
+    background-color: #4caf50 !important; /* Green background */
+    color: white !important; /* White text */
+  }
+  
+  .snackbar-success .mat-simple-snackbar-action {
+    color: #ffffff !important; /* White color for the action button */
+  }
+  
+
 /* Container for the Catalog */
 .catalogo-container {
     display: grid;

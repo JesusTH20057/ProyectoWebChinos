@@ -2,7 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { CartService } from '../carrito/cart.service'; 
+import { CartService } from '../carrito/cart.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSnackBar and its module
 
 interface Producto {
   id: number;
@@ -14,14 +15,18 @@ interface Producto {
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatSnackBarModule], // Include MatSnackBarModule
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit {
   productos: Producto[] = [];
 
-  constructor(private http: HttpClient, private cartService: CartService) {} // Inject CartService
+  constructor(
+    private http: HttpClient,
+    private cartService: CartService,
+    private snackBar: MatSnackBar // Inject MatSnackBar
+  ) {}
 
   ngOnInit() {
     console.log('CatalogoComponent initialized');
@@ -48,5 +53,15 @@ export class CatalogoComponent implements OnInit {
 
   agregarAlCarrito(producto: Producto) {
     this.cartService.addToCart(producto); // Use CartService to add product
+    this.showConfirmation(producto.nombre);
+  }
+
+  showConfirmation(productName: string) {
+    this.snackBar.open(`${productName} añadido al carrito!`, 'Cerrar', {
+      duration: 3000, // Duration in milliseconds
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: ['snackbar-success'] 
+    });
   }
 }
