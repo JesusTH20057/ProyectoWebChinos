@@ -1,6 +1,11 @@
 <?php
 // php/backend/create-payment-intent.php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 require '/var/www/html/backend/vendor/autoload.php';
 
 use Stripe\Stripe;
