@@ -134,6 +134,16 @@ CREATE TABLE Pagos (
     FOREIGN KEY (PedidoID) REFERENCES Pedidos(PedidoID) ON DELETE CASCADE
 );
 
+-- Insert an admin user with hashed password
+INSERT INTO Clientes (NombreCompleto, Email, Telefono, NombreUsuario, Contrasena) 
+VALUES (
+    'Admin User',
+    'admin@admin.com',
+    '1234567890',
+    'admin',
+    '$2a$12$2YGO9InljsT5kY6FAA8RMe2ZOMDLUVbjCL9kBWvDk.MEVNJpzRM9u' -- 'admin' hashed using bcrypt
+);
+
 -- Índices adicionales
 CREATE INDEX idx_productos_categoria ON Productos(CategoriaID);
 CREATE INDEX idx_productos_marca ON Productos(MarcaID);
