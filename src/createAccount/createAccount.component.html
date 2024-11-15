@@ -1,0 +1,175 @@
+<section class="create-account">
+    <h2>Crear Cuenta</h2>
+    <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
+      <!-- Información de Cuenta -->
+      <fieldset>
+        <legend>Información de Cuenta</legend>
+  
+        <div class="form-group">
+          <label for="nombreCompleto">Nombre Completo:</label>
+          <input
+            type="text"
+            id="nombreCompleto"
+            name="nombreCompleto"
+            [(ngModel)]="cliente.nombreCompleto"
+            required
+            [ngClass]="{'error': accountForm.submitted && !cliente.nombreCompleto}"
+          />
+          <div *ngIf="accountForm.submitted && !cliente.nombreCompleto" class="error-message">
+            Este campo es obligatorio.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="cliente.email"
+            required
+            [ngClass]="{'error': accountForm.submitted && !cliente.email}"
+          />
+          <div *ngIf="accountForm.submitted && !cliente.nombreCompleto" class="error-message">
+            Este campo es obligatorio.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            [(ngModel)]="cliente.telefono"
+            required
+            [ngClass]="{'error': accountForm.submitted && !cliente.telefono}"
+          />
+          <div *ngIf="accountForm.submitted && !cliente.nombreCompleto" class="error-message">
+            Este campo es obligatorio.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="nombreUsuario">Nombre de Usuario:</label>
+          <input
+            type="text"
+            id="nombreUsuario"
+            name="nombreUsuario"
+            [(ngModel)]="cliente.nombreUsuario"
+            required
+            [ngClass]="{'error': accountForm.submitted && !cliente.nombreUsuario}"
+          />
+          <div *ngIf="accountForm.submitted && !cliente.nombreCompleto" class="error-message">
+            Este campo es obligatorio.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="contrasena">Contraseña:</label>
+          <input
+            type="password"
+            id="contrasena"
+            name="contrasena"
+            [(ngModel)]="cliente.contrasena"
+            required
+            [ngClass]="{'error': accountForm.submitted && !cliente.contrasena}"
+          />
+          <div *ngIf="accountForm.submitted && !cliente.nombreCompleto" class="error-message">
+            Este campo es obligatorio.
+          </div>
+        </div>
+      </fieldset>
+  
+      <!-- Dirección -->
+      <fieldset>
+        <legend>Dirección</legend>
+  
+        <div class="form-group">
+          <label for="calle">Calle:</label>
+          <input
+            type="text"
+            id="calle"
+            name="calle"
+            [(ngModel)]="direccion.calle"
+            required
+            [ngClass]="{'error': accountForm.submitted && !direccion.calle}"
+          />
+          <div *ngIf="accountForm.submitted && !cliente.nombreCompleto" class="error-message">
+            Este campo es obligatorio.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="ciudad">Ciudad:</label>
+          <input
+            type="text"
+            id="ciudad"
+            name="ciudad"
+            [(ngModel)]="direccion.ciudad"
+            required
+            [ngClass]="{'error': accountForm.submitted && !direccion.ciudad }"
+          />
+          <div *ngIf="accountForm.submitted && !cliente.nombreCompleto" class="error-message">
+            Este campo es obligatorio.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="estado">Estado:</label>
+          <input
+            type="text"
+            id="estado"
+            name="estado"
+            [(ngModel)]="direccion.estado"
+            required
+            [ngClass]="{'error': accountForm.submitted && !direccion.estado}"
+          />
+          <div *ngIf="accountForm.submitted && !cliente.nombreCompleto" class="error-message">
+            Este campo es obligatorio.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="codigoPostal">Código Postal:</label>
+          <input
+            type="text"
+            id="codigoPostal"
+            name="codigoPostal"
+            [(ngModel)]="direccion.codigoPostal"
+            required
+            [ngClass]="{'error': accountForm.submitted && !direccion.codigoPostal}"
+          />
+          <div *ngIf="accountForm.submitted && !cliente.nombreCompleto" class="error-message">
+            Este campo es obligatorio.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="pais">País:</label>
+          <input
+            type="text"
+            id="pais"
+            name="pais"
+            [(ngModel)]="direccion.pais"
+            required
+            [ngClass]="{'error': accountForm.submitted && !direccion.pais}"
+          />
+          <div *ngIf="accountForm.submitted && !cliente.nombreCompleto" class="error-message">
+            Este campo es obligatorio.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="tipo">Tipo de Dirección:</label>
+          <select id="tipo" name="tipo" [(ngModel)]="direccion.tipo">
+            <option value="Envío">Envío</option>
+            <option value="Facturación">Facturación</option>
+          </select>
+        </div>
+      </fieldset>
+  
+      <button type="submit">Crear Cuenta</button>
+    </form>
+  </section>
+  

@@ -6,6 +6,8 @@ import { NosotrosComponent } from '../nosotros/nosotros.component';
 import { PagoComponent } from '../pago/pago.component';
 import { TerminosComponent } from '../terminos/terminos.component';
 import { CarritoComponent } from '../carrito/carrito.component'; // Import CarritoComponent
+import {CreateAccountComponent} from '../createAccount/createAccount.component';
+import {LoginComponent} from '../login/login.component';
 
 
 export const routes: Routes = [
@@ -15,8 +17,9 @@ export const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'pago', component: PagoComponent },
   { path: 'terminos', component: TerminosComponent },
-  { path: 'carrito', component: CarritoComponent }, 
-
+  { path: 'carrito', component: CarritoComponent },
+  {path: 'createAccount', component: CreateAccountComponent},
+  {path: 'login', component: LoginComponent},  
 
   { path: '**', redirectTo: '' } // Redirect unknown routes to home
 ];
