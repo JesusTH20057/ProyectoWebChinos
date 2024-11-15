@@ -1,13 +1,13 @@
 <?php
 
-// register.php
+//register.php
 
 // Configuración de la conexión a la base de datos
-$host = 'postgres'; 
-$dbname = getenv('POSTGRES_DB'); 
-$user = getenv('POSTGRES_USER'); 
-$pass = getenv('POSTGRES_PASSWORD'); 
-$port = '5432'; 
+$host = 'postgres';
+$dbname = getenv('POSTGRES_DB');
+$user = getenv('POSTGRES_USER');
+$pass = getenv('POSTGRES_PASSWORD');
+$port = '5432';
 
 try {
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
@@ -28,7 +28,6 @@ function isValidEmail($email) {
 
 // Función para validar la fortaleza de la contraseña (opcional)
 function isValidPassword($password) {
-    // Por ejemplo, al menos 6 caracteres
     return strlen($password) >= 6;
 }
 
@@ -37,21 +36,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener los datos JSON de la solicitud
     $data = json_decode(file_get_contents('php://input'), true);
 
-    // Validar la entrada
-    if (!isset($data['nombre']) || !isset($data['nombreUsuario']) || !isset($data['correo']) || !isset($data['contrasena'])) {
+    // Validar los campos obligatorios
+    if (!isset($data['cliente']) || !isset($data['direccion'])) {
         http_response_code(400);
         echo json_encode(["error" => "Faltan campos obligatorios."]);
         exit;
     }
 
-    $nombre = trim($data['nombre']);
-    $nombreUsuario = trim($data['nombreUsuario']);
-    $correo = trim($data['correo']);
-    $contrasena = $data['contrasena'];
-    $telefono = isset($data['telefono']) ? trim($data['telefono']) : null; // Opcional
+    $cliente = $data['cliente'];
+    $direccion = $data['direccion'];
+
+    // Validar la entrada del cliente
+    if (!isset($cliente['nombreCompleto'], $cliente['email'], $cliente['nombreUsuario'], $cliente['contrasena'])) {
+        http_response_code(400);
+        echo json_encode(["error" => "Faltan campos obligatorios en los datos del cliente."]);
+        exit;
+    }
+
+    $nombre = trim($cliente['nombreCompleto']);
+    $nombreUsuario = trim($cliente['nombreUsuario']);
+    $correo = trim($cliente['email']);
+    $contrasena = $cliente['contrasena'];
+    $telefono = isset($cliente['telefono']) ? trim($cliente['telefono']) : null;
+
+    // Validar la entrada de la dirección
+    if (!isset($direccion['calle'], $direccion['ciudad'], $direccion['pais'])) {
+        http_response_code(400);
+        echo json_encode(["error" => "Faltan campos obligatorios en los datos de la dirección."]);
+        exit;
+    }
+
+    $calle = trim($direccion['calle']);
+    $ciudad = trim($direccion['ciudad']);
+    $estado = isset($direccion['estado']) ? trim($direccion['estado']) : null;
+    $codigoPostal = isset($direccion['codigoPostal']) ? trim($direccion['codigoPostal']) : null;
+    $pais = trim($direccion['pais']);
+    $tipo = isset($direccion['tipo']) ? trim($direccion['tipo']) : 'Envío';
 
     // Validaciones básicas
-    if (empty($nombre) || empty($nombreUsuario) || empty($correo) || empty($contrasena)) {
+    if (empty($nombre) || empty($nombreUsuario) || empty($correo) || empty($contrasena) || empty($calle) || empty($ciudad) || empty($pais)) {
         http_response_code(400);
         echo json_encode(["error" => "Todos los campos obligatorios deben estar completos."]);
         exit;
@@ -92,26 +115,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
+        // Iniciar transacción
+        $pdo->beginTransaction();
+
         // Hash de la contraseña usando bcrypt
         $hashedPassword = password_hash($contrasena, PASSWORD_BCRYPT);
 
-        // Insertar el nuevo usuario en la base de datos
-        $insertStmt = $pdo->prepare("
+        // Insertar el nuevo cliente en la base de datos
+        $insertCliente = $pdo->prepare("
             INSERT INTO clientes (nombrecompleto, email, telefono, nombreusuario, contrasena)
             VALUES (:nombreCompleto, :correo, :telefono, :nombreUsuario, :contrasena)
             RETURNING clienteid
         ");
-        $insertStmt->bindParam(':nombreCompleto', $nombre);
-        $insertStmt->bindParam(':correo', $correo);
-        $insertStmt->bindParam(':telefono', $telefono);
-        $insertStmt->bindParam(':nombreUsuario', $nombreUsuario);
-        $insertStmt->bindParam(':contrasena', $hashedPassword);
-        $insertStmt->execute();
+        $insertCliente->bindParam(':nombreCompleto', $nombre);
+        $insertCliente->bindParam(':correo', $correo);
+        $insertCliente->bindParam(':telefono', $telefono);
+        $insertCliente->bindParam(':nombreUsuario', $nombreUsuario);
+        $insertCliente->bindParam(':contrasena', $hashedPassword);
+        $insertCliente->execute();
 
-        $nuevoClienteID = $insertStmt->fetchColumn();
+        $nuevoClienteID = $insertCliente->fetchColumn();
 
-        // Opcional: Enviar correo de bienvenida o confirmación
-        // Puedes implementar aquí el envío de un correo electrónico de confirmación si lo deseas.
+        // Insertar la dirección en la base de datos
+        $insertDireccion = $pdo->prepare("
+            INSERT INTO direcciones (clienteid, calle, ciudad, estado, codigopostal, pais, tipo)
+            VALUES (:clienteID, :calle, :ciudad, :estado, :codigoPostal, :pais, :tipo)
+        ");
+        $insertDireccion->bindParam(':clienteID', $nuevoClienteID);
+        $insertDireccion->bindParam(':calle', $calle);
+        $insertDireccion->bindParam(':ciudad', $ciudad);
+        $insertDireccion->bindParam(':estado', $estado);
+        $insertDireccion->bindParam(':codigoPostal', $codigoPostal);
+        $insertDireccion->bindParam(':pais', $pais);
+        $insertDireccion->bindParam(':tipo', $tipo);
+        $insertDireccion->execute();
+
+        // Confirmar la transacción
+        $pdo->commit();
 
         // Responder con éxito
         echo json_encode([
@@ -120,6 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             "clienteID" => $nuevoClienteID
         ]);
     } catch (PDOException $e) {
+        $pdo->rollBack();
         http_response_code(500);
         echo json_encode(["error" => "Error del servidor: " . $e->getMessage()]);
     }
@@ -128,3 +169,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode(["error" => "Método no permitido."]);
 }
 ?>
+

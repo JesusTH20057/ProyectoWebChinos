@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; // Optional: For Snackbar notifications
+import { Router } from '@angular/router'; // Import Router for navigation
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent {
 
   constructor(
     private http: HttpClient,
-    private snackBar: MatSnackBar // Optional: Inject MatSnackBar
+    private snackBar: MatSnackBar, // Optional: Inject MatSnackBar
+    private router: Router // Inject Router
   ) {}
 
   // Método para manejar el envío del formulario
@@ -55,6 +57,7 @@ export class LoginComponent {
         if (response.success) {
           this.successMessage = response.message;
           this.showSuccessMessage(response.message);
+          setTimeout(() => this.router.navigate(['/inicio']), 3000); // 3 seconds delay for user to see the success message
           // Optionally, store user info or token
           // localStorage.setItem('currentUser', JSON.stringify(response.user));
           // Redirect to a protected route if necessary
