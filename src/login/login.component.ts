@@ -32,6 +32,7 @@ export class LoginComponent {
   // Método para manejar el envío del formulario
   iniciarSesion(form: FormsModule) {
     // Clear previous messages
+    this.router.navigate(['/recover-password']);
     this.errorMessage = '';
     this.successMessage = '';
 
@@ -57,11 +58,11 @@ export class LoginComponent {
         if (response.success) {
           this.successMessage = response.message;
           this.showSuccessMessage(response.message);
-          setTimeout(() => this.router.navigate(['/inicio']), 3000); // 3 seconds delay for user to see the success message
           // Optionally, store user info or token
           // localStorage.setItem('currentUser', JSON.stringify(response.user));
           // Redirect to a protected route if necessary
           // window.location.href = '/dashboard'; // Or use Angular Router for navigation
+          //setTimeout(() => this.router.navigate(['/inicio']), 3000); // 3 seconds delay for user to see the success message
         } else {
           this.errorMessage = 'Inicio de sesión fallido.';
           this.showErrorMessage('Inicio de sesión fallido.');

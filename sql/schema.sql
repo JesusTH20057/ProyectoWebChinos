@@ -24,6 +24,17 @@ CREATE TABLE Direcciones (
     FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID) ON DELETE CASCADE
 );
 
+CREATE TABLE password_resets (
+    id SERIAL PRIMARY KEY,
+    clienteid INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,  -- Nueva columna para la contraseña
+    fecha_expiracion TIMESTAMP NOT NULL,
+    FOREIGN KEY (clienteid) REFERENCES clientes(clienteid) ON DELETE CASCADE
+);
+
+
+
 -- Tabla CuentasPago
 CREATE TABLE CuentasPago (
     CuentaPagoID SERIAL PRIMARY KEY,

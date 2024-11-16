@@ -8,7 +8,7 @@ import { TerminosComponent } from '../terminos/terminos.component';
 import { CarritoComponent } from '../carrito/carrito.component'; // Import CarritoComponent
 import {CreateAccountComponent} from '../createAccount/createAccount.component';
 import {LoginComponent} from '../login/login.component';
-
+import {RecuperarContrasenaComponent} from '../recuperarContrasena/recuperarContrasena.component';
 
 export const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -20,6 +20,7 @@ export const routes: Routes = [
   { path: 'carrito', component: CarritoComponent },
   {path: 'createAccount', component: CreateAccountComponent},
   {path: 'login', component: LoginComponent},  
+  {path: 'recuperarContrasena', component: RecuperarContrasenaComponent},
 
   { path: '**', redirectTo: '' } // Redirect unknown routes to home
 ];
