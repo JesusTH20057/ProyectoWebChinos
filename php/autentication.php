@@ -13,8 +13,12 @@ try {
     // Set PDO error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Error connecting to database: " . $e->getMessage());
+    error_log("Database connection error: " . $e->getMessage()); // Log error
+    die(json_encode(["error" => "Error connecting to the database."])); // Avoid exposing details to users
 }
+
+// Set response headers
+header('Content-Type: application/json');
 
 // Check if the request is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -28,12 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $nombreUsuario = $data['nombreUsuario'];
+    // Sanitize input
+    $nombreUsuario = filter_var($data['nombreUsuario'], FILTER_SANITIZE_STRING);
     $contrasena = $data['contrasena'];
 
     try {
-        // Prepare the SQL query, ensuring case-insensitive match for column names
-        $stmt = $pdo->prepare("SELECT * FROM Clientes WHERE nombreusuario = :nombreUsuario");
+        // Prepare the SQL query with case-insensitive username matching
+        $stmt = $pdo->prepare("SELECT clienteid, nombreusuario, contrasena FROM Clientes WHERE LOWER(nombreusuario) = LOWER(:nombreUsuario)");
         $stmt->bindParam(':nombreUsuario', $nombreUsuario);
         $stmt->execute();
 
@@ -41,12 +46,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Check if user exists and verify the password
         if ($user && password_verify($contrasena, $user['contrasena'])) {
+            // Determine the user's role
+            $role = (strtolower($user['nombreusuario']) === 'admin') ? 'admin' : 'user';
+
             echo json_encode([
                 "success" => true,
                 "message" => "Login successful.",
                 "user" => [
                     "id" => $user['clienteid'],
-                    "username" => $user['nombreusuario']
+                    "username" => $user['nombreusuario'],
+                    "role" => $role // Include user role for client handling
                 ]
             ]);
         } else {
@@ -54,8 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode(["error" => "Invalid username or password."]);
         }
     } catch (PDOException $e) {
+        error_log("Query error: " . $e->getMessage()); // Log detailed error
         http_response_code(500);
-        echo json_encode(["error" => "Server error: " . $e->getMessage()]);
+        echo json_encode(["error" => "An unexpected server error occurred."]);
     }
 } else {
     http_response_code(405);

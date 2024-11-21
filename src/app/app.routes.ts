@@ -9,6 +9,8 @@ import { CarritoComponent } from '../carrito/carrito.component'; // Import Carri
 import {CreateAccountComponent} from '../createAccount/createAccount.component';
 import {LoginComponent} from '../login/login.component';
 import {RecuperarContrasenaComponent} from '../recuperarContrasena/recuperarContrasena.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+
 
 export const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -21,6 +23,7 @@ export const routes: Routes = [
   {path: 'createAccount', component: CreateAccountComponent},
   {path: 'login', component: LoginComponent},  
   {path: 'recuperarContrasena', component: RecuperarContrasenaComponent},
+  { path: 'dashboard', component: DashboardComponent /*, canActivate: [AdminGuard] */ },
 
   { path: '**', redirectTo: '' } // Redirect unknown routes to home
 ];
