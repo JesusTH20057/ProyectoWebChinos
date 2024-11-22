@@ -1,1 +1,17 @@
-<p>producto works!</p>
+<div class="producto" *ngIf="producto">
+    <h1>{{ producto.nombreproducto }}</h1>
+    <img [src]="producto.urlimagen" alt="Imagen del producto" />
+    <p><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+    <p><strong>Stock:</strong> {{ producto.stock }}</p>
+    <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+    <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+    <p><strong>Marca:</strong> {{ producto.marca }}</p>
+    <p><strong>Materiales:</strong> {{ producto.materiales }}</p>
+    <p><strong>Peso:</strong> {{ producto.peso }} kg</p>
+    <p><strong>Dimensiones:</strong> {{ producto.altura }}x{{ producto.ancho }}x{{ producto.profundidad }} cm</p>
+    <div class="acciones">
+      <button (click)="irAModificarProducto()">Modificar Producto</button>
+      <button (click)="regresarAlDashboard()">Volver al Dashboard</button>
+    </div>
+  </div>
+  
