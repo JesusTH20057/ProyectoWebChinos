@@ -76,7 +76,7 @@ export class AgregarProductoComponent implements OnInit {
       !this.producto.stock ||
       !this.producto.imagen ||
       !this.producto.categoriaid ||
-      !this.producto.marca
+      !this.producto.marcaid
     ) {
       alert('Por favor completa todos los campos obligatorios');
       return;

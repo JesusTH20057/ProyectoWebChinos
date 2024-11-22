@@ -1,41 +1,97 @@
-/* .agregar-producto {
+/* Contenedor del formulario */
+.agregar-producto {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 0 auto;
+    background: #2c2c2c;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
   }
   
+  /* Título del formulario */
   .agregar-producto h1 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 24px;
+    color: #ffffff;
   }
   
-  .agregar-producto form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .agregar-producto input {
+  /* Estilo para los inputs, textareas y select */
+  .agregar-producto input,
+  .agregar-producto textarea,
+  .agregar-producto select {
+    width: 100%;
+    height: 40px; /* Altura uniforme */
+    padding: 10px; /* Espaciado interno */
     margin-bottom: 15px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #575757;
     border-radius: 5px;
+    background: #1c1c1c;
+    color: #ffffff;
+    font-size: 14px;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
   }
   
+  /* Textarea específico */
+  .agregar-producto textarea {
+    height: 100px; /* Altura mayor para el texto */
+    resize: none;
+    padding: 10px;
+  }
+  
+  /* Placeholder alineado */
+  .agregar-producto input::placeholder,
+  .agregar-producto textarea::placeholder {
+    color: #aaaaaa;
+    font-size: 14px;
+  }
+  
+  /* Select personalizado */
+  .agregar-producto select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23FFFFFF' d='M2 0L0 2h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+  }
+  
+  /* Botón de envío */
   .agregar-producto button {
-    padding: 10px 15px;
-    font-size: 16px;
-    background-color: #4caf50;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
   }
   
+  /* Hover en el botón */
   .agregar-producto button:hover {
     background-color: #45a049;
-  } */
+  }
+  
+  /* Hover y foco en inputs */
+  .agregar-producto input:hover,
+  .agregar-producto textarea:hover,
+  .agregar-producto select:hover,
+  .agregar-producto input:focus,
+  .agregar-producto textarea:focus,
+  .agregar-producto select:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  
+  /* Ajuste para centrar texto en campos */
+  .agregar-producto input,
+  .agregar-producto textarea,
+  .agregar-producto select {
+    text-align: left;
+    line-height: normal; /* Ajusta la altura de línea para centrar mejor */
+  }
+  
   
