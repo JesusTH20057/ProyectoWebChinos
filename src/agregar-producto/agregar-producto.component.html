@@ -1,0 +1,124 @@
+<div class="agregar-producto">
+    <h1>Agregar Producto</h1>
+    <form (ngSubmit)="agregarProducto()">
+      <!-- Nombre del Producto -->
+      <input
+        type="text"
+        placeholder="Nombre del Producto"
+        [(ngModel)]="producto.nombre"
+        name="nombre"
+        required
+      />
+      
+      <!-- Descripción del Producto -->
+      <textarea
+        placeholder="Descripción del Producto"
+        [(ngModel)]="producto.descripcion"
+        name="descripcion"
+      ></textarea>
+      
+      <!-- Precio del Producto -->
+      <input
+        type="number"
+        placeholder="Precio del Producto"
+        [(ngModel)]="producto.precio"
+        name="precio"
+        required
+      />
+      
+      <!-- Stock del Producto -->
+      <input
+        type="number"
+        placeholder="Stock del Producto"
+        [(ngModel)]="producto.stock"
+        name="stock"
+        required
+      />
+      
+      <!-- URL de la Imagen -->
+      <input
+        type="text"
+        placeholder="URL de la Imagen"
+        [(ngModel)]="producto.imagen"
+        name="imagen"
+        required
+      />
+      
+      <!-- Menú desplegable de categorías -->
+      <select [(ngModel)]="producto.categoriaid" name="categoriaid" required>
+        <option value="" disabled selected>Selecciona una categoría</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria.id">
+          {{ categoria.nombre }}
+        </option>
+      </select>
+
+      <select [(ngModel)]="producto.marcaid" name="marcaid" required>
+        <option value="" disabled selected>Selecciona una marca</option>
+        <option *ngFor="let marca of marcas" [value]="marca.id">
+          {{ marca.nombre }}
+        </option>
+      </select>
+      
+      
+  
+      <!-- Marca del Producto -->
+      <input
+        type="text"
+        placeholder="Marca del Producto"
+        [(ngModel)]="producto.marca"
+        name="marca"
+        required
+      />
+  
+      <!-- Materiales del Producto -->
+      <input
+        type="text"
+        placeholder="Materiales del Producto"
+        [(ngModel)]="producto.materiales"
+        name="materiales"
+      />
+  
+      <!-- Peso del Producto -->
+      <input
+        type="number"
+        step="0.01"
+        placeholder="Peso del Producto (kg)"
+        [(ngModel)]="producto.peso"
+        name="peso"
+      />
+      
+      <!-- Altura del Producto -->
+      <input
+        type="number"
+        step="0.01"
+        placeholder="Altura del Producto (cm)"
+        [(ngModel)]="producto.altura"
+        name="altura"
+      />
+      
+      <!-- Ancho del Producto -->
+      <input
+        type="number"
+        step="0.01"
+        placeholder="Ancho del Producto (cm)"
+        [(ngModel)]="producto.ancho"
+        name="ancho"
+      />
+      
+      <!-- Profundidad del Producto -->
+      <input
+        type="number"
+        step="0.01"
+        placeholder="Profundidad del Producto (cm)"
+        [(ngModel)]="producto.profundidad"
+        name="profundidad"
+      />
+  
+      <!-- Botón de envío -->
+      <button type="submit">Agregar Producto</button>
+    </form>
+  </div>
+  
+  
+  
+  

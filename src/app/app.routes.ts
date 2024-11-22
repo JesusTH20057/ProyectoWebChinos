@@ -10,6 +10,8 @@ import {CreateAccountComponent} from '../createAccount/createAccount.component';
 import {LoginComponent} from '../login/login.component';
 import {RecuperarContrasenaComponent} from '../recuperarContrasena/recuperarContrasena.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { ProductoComponent } from '../producto/producto.component';
+import { AgregarProductoComponent } from '../agregar-producto/agregar-producto.component';
 
 
 export const routes: Routes = [
@@ -24,6 +26,8 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},  
   {path: 'recuperarContrasena', component: RecuperarContrasenaComponent},
   { path: 'dashboard', component: DashboardComponent /*, canActivate: [AdminGuard] */ },
+  { path: 'producto/:id', component: ProductoComponent },
+  { path: 'agregar-producto', component: AgregarProductoComponent },
 
   { path: '**', redirectTo: '' } // Redirect unknown routes to home
 ];

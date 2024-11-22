@@ -1,6 +1,47 @@
 <!-- src/app/dashboard/dashboard.component.html -->
-<div class="dashboard-container">
-    <h1>Admin Dashboard</h1>
-    <p>Welcome, Admin! Here you can manage the application.</p>
-  </div>
+<div class="dashboard">
+  <h1>Gestión de Productos</h1>
+
+  <!-- Botón para agregar un nuevo producto -->
+  <button class="add-product-btn" (click)="irAAgregarProducto()">Agregar Producto</button>
+
+  <!-- Tabla de productos -->
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos" (click)="verProducto(producto.id)">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.precio | currency }}</td>
+        <td>{{ producto.stock }}</td>
+        <td><img [src]="producto.imagen" alt="{{ producto.nombre }}" width="80"></td>
+        <td>
+          <!-- Ver detalles -->
+          <button class="view-product-btn">Ver</button>
+        </td>
+        <td>
+          <!-- Botón para eliminar producto -->
+          <button class="delete-product-btn" (click)="eliminarProducto($event, producto.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
   

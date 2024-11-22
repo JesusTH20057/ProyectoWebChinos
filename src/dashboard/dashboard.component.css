@@ -1,11 +1,102 @@
 /* src/app/dashboard/dashboard.component.css */
-.dashboard-container {
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-  }
-  
-  h1 {
-    color: #3f51b5;
-  }
-  
+/* Tabla estilizada */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 16px;
+  text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background: #2c2c2c; /* Fondo oscuro para adaptarse a tu página */
+  color: #ffffff; /* Texto blanco para mejor contraste */
+}
+
+/* Encabezados */
+.styled-table thead tr {
+  background-color: #1c1c1c; /* Verde con buen contraste */
+  color: #ffffff;
+  text-align: left; /* Alinear a la izquierda */
+  font-weight: bold;
+}
+
+/* Encabezados centrados */
+.styled-table thead th {
+  text-align: left; /* Alinear encabezados con el contenido */
+  padding: 12px 15px;
+}
+
+/* Celdas */
+.styled-table th, .styled-table td {
+  padding: 12px 15px;
+  vertical-align: middle; /* Centrar texto verticalmente */
+}
+
+/* Filas alternadas */
+.styled-table tbody tr:nth-child(even) {
+  background-color: #3a3a3a; /* Alternar con gris oscuro */
+}
+
+/* Hover en las filas */
+.styled-table tbody tr:hover {
+  background-color: #575757; /* Resaltar fila */
+  cursor: pointer;
+}
+
+/* Bordes suaves */
+.styled-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Estilo para las imágenes */
+.styled-table img {
+  border-radius: 8px;
+  object-fit: cover;
+  width: 80px; /* Tamaño consistente */
+  height: 80px;
+}
+
+/* Alinear el contenido */
+.styled-table td:nth-child(1), /* ID */
+.styled-table td:nth-child(4), /* Stock */
+.styled-table td:nth-child(5) { /* Imagen */
+  text-align: center; /* Centrar columnas específicas */
+}
+
+/* Botón para agregar productos */
+.add-product-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Botones de acción */
+.view-product-btn, .delete-product-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-product-btn {
+  background-color: #2196F3;
+  color: white;
+}
+
+.delete-product-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Hover effects */
+button:hover {
+  opacity: 0.9;
+}
+
+
+

@@ -71,6 +71,7 @@ CREATE TABLE Productos (
     CategoriaID INT NOT NULL,
     MarcaID INT NOT NULL,
     Precio DECIMAL(10, 2) NOT NULL,
+    Stock INT NOT NULL DEFAULT 0, -- Columna de Stock
     Materiales VARCHAR(255),
     Peso DECIMAL(10, 2),
     Altura DECIMAL(10, 2),
@@ -79,6 +80,7 @@ CREATE TABLE Productos (
     FOREIGN KEY (CategoriaID) REFERENCES Categorias(CategoriaID) ON DELETE SET NULL,
     FOREIGN KEY (MarcaID) REFERENCES Marcas(MarcaID) ON DELETE SET NULL
 );
+
 
 -- Tabla ProductoProveedores
 CREATE TABLE ProductoProveedores (
@@ -192,20 +194,22 @@ INSERT INTO Productos (
     CategoriaID, 
     MarcaID, 
     Precio, 
+    Stock, 
     Materiales, 
     Peso, 
     Altura, 
     Ancho, 
     Profundidad
 ) VALUES 
-('Mancuernas', 'Juego de mancuernas ajustables de 10kg', 1, 1, 499.99, 'Acero y goma', 10.0, 15.0, 5.0, 5.0),
-('Banco de Pesas', 'Banco ajustable para ejercicios de fuerza', 1, 2, 999.99, 'Acero y acolchado', 50.0, 100.0, 60.0, 30.0),
-('Bicicleta Estática', 'Bicicleta estática con resistencia magnética', 2, 3, 3499.99, 'Acero y plástico', 70.0, 120.0, 50.0, 40.0),
-('Pelota de Pilates', 'Pelota de pilates anti-explosión de 65 cm', 4, 4, 299.99, 'PVC', 2.0, 65.0, 65.0, 65.0),
-('Cuerda para Saltar', 'Cuerda para saltar de velocidad con asas antideslizantes', 3, 1, 199.99, 'Plástico y caucho', 0.5, 150.0, 2.0, 2.0),
-('Kettlebell', 'Kettlebell de 12kg para entrenamiento funcional', 1, 2, 599.99, 'Acero fundido', 12.0, 30.0, 30.0, 30.0),
-('Colchoneta de Yoga', 'Colchoneta antideslizante para yoga y pilates', 4, 4, 399.99, 'EVA y caucho natural', 1.0, 180.0, 60.0, 2.0),
-('Chaleco Lastrado', 'Chaleco lastrado de 10kg para entrenamiento de resistencia', 3, 3, 1299.99, 'Neopreno y acero', 10.0, 30.0, 25.0, 10.0);
+('Mancuernas', 'Juego de mancuernas ajustables de 10kg', 1, 1, 499.99, 50, 'Acero y goma', 10.0, 15.0, 5.0, 5.0),
+('Banco de Pesas', 'Banco ajustable para ejercicios de fuerza', 1, 2, 999.99, 30, 'Acero y acolchado', 50.0, 100.0, 60.0, 30.0),
+('Bicicleta Estática', 'Bicicleta estática con resistencia magnética', 2, 3, 3499.99, 20, 'Acero y plástico', 70.0, 120.0, 50.0, 40.0),
+('Pelota de Pilates', 'Pelota de pilates anti-explosión de 65 cm', 4, 4, 299.99, 70, 'PVC', 2.0, 65.0, 65.0, 65.0),
+('Cuerda para Saltar', 'Cuerda para saltar de velocidad con asas antideslizantes', 3, 1, 199.99, 90, 'Plástico y caucho', 0.5, 150.0, 2.0, 2.0),
+('Kettlebell', 'Kettlebell de 12kg para entrenamiento funcional', 1, 2, 599.99, 40, 'Acero fundido', 12.0, 30.0, 30.0, 30.0),
+('Colchoneta de Yoga', 'Colchoneta antideslizante para yoga y pilates', 4, 4, 399.99, 60, 'EVA y caucho natural', 1.0, 180.0, 60.0, 2.0),
+('Chaleco Lastrado', 'Chaleco lastrado de 10kg para entrenamiento de resistencia', 3, 3, 1299.99, 25, 'Neopreno y acero', 10.0, 30.0, 25.0, 10.0);
+
 
 -- Insertar imágenes de productos
 INSERT INTO ImagenesProducto (ProductoID, URLImagen) VALUES
