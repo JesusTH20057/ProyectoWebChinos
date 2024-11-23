@@ -1,0 +1,123 @@
+<div class="modificar-producto" *ngIf="producto">
+    <h1>Modificar Producto</h1>
+    <form (ngSubmit)="guardarCambios()">
+      <!-- Nombre del Producto -->
+      <label for="nombre">Nombre del Producto:</label>
+      <input
+        id="nombre"
+        type="text"
+        [(ngModel)]="producto.nombreproducto"
+        name="nombreproducto"
+        required
+      />
+  
+      <!-- Descripción -->
+      <label for="descripcion">Descripción:</label>
+      <textarea
+        id="descripcion"
+        [(ngModel)]="producto.descripcion"
+        name="descripcion"
+      ></textarea>
+  
+      <!-- Precio -->
+      <label for="precio">Precio:</label>
+      <input
+        id="precio"
+        type="number"
+        step="0.01"
+        [(ngModel)]="producto.precio"
+        name="precio"
+        required
+      />
+  
+      <!-- Stock -->
+      <label for="stock">Stock:</label>
+      <input
+        id="stock"
+        type="number"
+        [(ngModel)]="producto.stock"
+        name="stock"
+        required
+      />
+
+      <label for="urlimagen">URL imagen</label>
+      <input
+        id="urlimagen"      
+        type="text"
+        [(ngModel)]="producto.urlimagen"
+        name="urlimagen"
+        required
+      />
+
+            <!-- Menú desplegable de Categorías -->
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" [(ngModel)]="producto.categoriaid" name="categoriaid" required>
+        <option *ngFor="let categoria of categorias" [value]="categoria.id">
+            {{ categoria.nombre }}
+        </option>
+        </select>
+
+        <!-- Menú desplegable de Marcas -->
+        <label for="marca">Marca:</label>
+        <select id="marca" [(ngModel)]="producto.marcaid" name="marcaid" required>
+        <option *ngFor="let marca of marcas" [value]="marca.id">
+            {{ marca.nombre }}
+        </option>
+        </select>
+
+
+  
+      <!-- Materiales -->
+      <label for="materiales">Materiales:</label>
+      <input
+        id="materiales"
+        type="text"
+        [(ngModel)]="producto.materiales"
+        name="materiales"
+      />
+  
+      <!-- Peso -->
+      <label for="peso">Peso (kg):</label>
+      <input
+        id="peso"
+        type="number"
+        step="0.01"
+        [(ngModel)]="producto.peso"
+        name="peso"
+      />
+  
+      <!-- Altura -->
+      <label for="altura">Altura (cm):</label>
+      <input
+        id="altura"
+        type="number"
+        step="0.01"
+        [(ngModel)]="producto.altura"
+        name="altura"
+      />
+  
+      <!-- Ancho -->
+      <label for="ancho">Ancho (cm):</label>
+      <input
+        id="ancho"
+        type="number"
+        step="0.01"
+        [(ngModel)]="producto.ancho"
+        name="ancho"
+      />
+  
+      <!-- Profundidad -->
+      <label for="profundidad">Profundidad (cm):</label>
+      <input
+        id="profundidad"
+        type="number"
+        step="0.01"
+        [(ngModel)]="producto.profundidad"
+        name="profundidad"
+      />
+  
+      <!-- Botón de Guardar Cambios -->
+      <button type="submit">Guardar Cambios</button>
+    </form>
+  </div>
+  

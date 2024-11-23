@@ -1,0 +1,57 @@
+.modificar-producto {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+  }
+  
+  .modificar-producto h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4CAF50;
+  }
+  
+  .modificar-producto label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .modificar-producto input,
+  .modificar-producto textarea,
+  .modificar-producto select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #575757;
+    border-radius: 5px;
+    background: #1c1c1c;
+    color: #ffffff;
+    font-size: 14px;
+  }
+  
+  .modificar-producto textarea {
+    height: 100px;
+    resize: none;
+  }
+  
+  .modificar-producto button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .modificar-producto button:hover {
+    background-color: #45a049;
+  }
+  
+  
