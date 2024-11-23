@@ -52,6 +52,7 @@
             <!-- Menú desplegable de Categorías -->
         <label for="categoria">Categoría:</label>
         <select id="categoria" [(ngModel)]="producto.categoriaid" name="categoriaid" required>
+        <option value="" disabled>Selecciona una categoría</option>
         <option *ngFor="let categoria of categorias" [value]="categoria.id">
             {{ categoria.nombre }}
         </option>
@@ -60,6 +61,7 @@
         <!-- Menú desplegable de Marcas -->
         <label for="marca">Marca:</label>
         <select id="marca" [(ngModel)]="producto.marcaid" name="marcaid" required>
+        <option value="" disabled>Selecciona una marca</option>
         <option *ngFor="let marca of marcas" [value]="marca.id">
             {{ marca.nombre }}
         </option>

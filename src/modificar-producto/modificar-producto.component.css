@@ -1,3 +1,4 @@
+/* Contenedor del formulario */
 .modificar-producto {
     max-width: 600px;
     margin: 0 auto;
@@ -8,37 +9,54 @@
     color: #ffffff;
   }
   
+  /* Título del formulario */
   .modificar-producto h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #4CAF50;
-  }
-  
-  .modificar-producto label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    font-size: 24px;
     color: #ffffff;
   }
   
+  /* Estilo para los inputs, textareas y select */
   .modificar-producto input,
   .modificar-producto textarea,
   .modificar-producto select {
     width: 100%;
-    padding: 10px;
+    height: 40px; /* Altura uniforme */
+    padding: 10px; /* Espaciado interno */
     margin-bottom: 15px;
     border: 1px solid #575757;
     border-radius: 5px;
     background: #1c1c1c;
     color: #ffffff;
     font-size: 14px;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
   }
   
+  /* Textarea específico */
   .modificar-producto textarea {
-    height: 100px;
+    height: 100px; /* Altura mayor para el texto */
     resize: none;
+    padding: 10px;
   }
   
+  /* Placeholder alineado */
+  .modificar-producto input::placeholder,
+  .modificar-producto textarea::placeholder {
+    color: #aaaaaa;
+    font-size: 14px;
+  }
+  
+  /* Select personalizado */
+  .modificar-producto select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23FFFFFF' d='M2 0L0 2h4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+  }
+  
+  /* Botón de envío */
   .modificar-producto button {
     width: 100%;
     padding: 10px;
@@ -50,8 +68,29 @@
     cursor: pointer;
   }
   
+  /* Hover en el botón */
   .modificar-producto button:hover {
     background-color: #45a049;
   }
+  
+  /* Hover y foco en inputs */
+  .modificar-producto input:hover,
+  .modificar-producto textarea:hover,
+  .modificar-producto select:hover,
+  .modificar-producto input:focus,
+  .modificar-producto textarea:focus,
+  .modificar-producto select:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  
+  /* Ajuste para centrar texto en campos */
+  .modificar-producto input,
+  .modificar-producto textarea,
+  .modificar-producto select {
+    text-align: left;
+    line-height: normal; /* Ajusta la altura de línea para centrar mejor */
+  }
+  
   
   
