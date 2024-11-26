@@ -1,15 +1,17 @@
-<!-- Recuperar contraseña: Añadir texto de prueba para depuración -->
 <div class="recuperarContrasena">
-    <h2>Recuperar Contraseña</h2>
-    <p>Este es un mensaje de prueba para verificar que el componente se está cargando correctamente.</p>
-    <form [formGroup]="recoveryForm" (ngSubmit)="onRequestToken()">
-      <label for="nombreUsuario">Nombre de Usuario:</label>
-      <input id="nombreUsuario" formControlName="nombreUsuario" />
-  
-      <label for="correo">Correo:</label>
-      <input id="correo" formControlName="correo" />
-  
+  <h2>Recuperar Contraseña</h2>
+  <p>Este es un mensaje de prueba para verificar que el componente se está cargando correctamente.</p>
+  <form [formGroup]="recoveryForm" (ngSubmit)="onRequestToken()">
+      <div class="form-group">
+          <label for="nombreUsuario">Nombre de Usuario:</label>
+          <input id="nombreUsuario" formControlName="nombreUsuario" />
+      </div>
+      <div class="form-group">
+          <label for="correo">Correo:</label>
+          <input id="correo" formControlName="correo" />
+      </div>
       <button type="submit" [disabled]="!recoveryForm.valid">Solicitar Token</button>
-    </form>
-  </div>
+  </form>
+</div>
+
   

@@ -29,6 +29,14 @@ export class LoginComponent {
     private router: Router // Inject Router
   ) {}
 
+  irARecuperarContrasena() {
+    this.router.navigate(['/recuperarContrasena']); // Cambiar por la ruta de tu componente
+  }
+
+  irACrearCuenta() {
+    this.router.navigate(['/createAccount']); // Cambiar por la ruta de tu componente
+  }
+
   // Method to handle form submission
   iniciarSesion() { // No parameters
     // Clear previous messages

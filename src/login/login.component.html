@@ -19,7 +19,9 @@
     </div>
 
     <div class="form-group">
-      <label for="contrasena">Contraseña</label>
+      <label for="contrasena">Contraseña
+        <a class="forgot-password-link" (click)="irARecuperarContrasena()">¿Has olvidado la contraseña?</a>
+      </label>
       <input
         type="password" 
         id="contrasena"
@@ -35,4 +37,11 @@
 
     <button type="submit">Iniciar Sesión</button>
   </form>
+
+  <!-- Separador -->
+  <div class="divider">¿Nuevo en la plataforma?</div>
+
+  <!-- Botón para crear cuenta -->
+  <button class="secondary-button" (click)="irACrearCuenta()">Crear una cuenta</button>
 </section>
+

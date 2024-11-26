@@ -25,34 +25,31 @@ p {
 .form-group {
     display: flex;
     flex-direction: column;
+    align-items: center; /* Centra los elementos horizontalmente */
     margin-bottom: 15px;
-    text-align: left;
 }
 
-/* Estilo de los labels */
 label {
     font-size: 0.9rem;
     margin-bottom: 5px;
-    text-align: left;
+    align-self: flex-start; /* Asegura que los labels estén alineados a la izquierda */
 }
 
-/* Estilo de los campos de entrada */
 input {
     padding: 10px;
     font-size: 1rem;
     border-radius: 5px;
     border: 1px solid #ccc;
     transition: border-color 0.3s;
-    margin-bottom: 15px; /* Asegura un espacio adecuado entre los campos */
-    width: 100%; /* Hace que los inputs ocupen todo el ancho disponible */
+    margin-bottom: 15px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    box-sizing: border-box; /* Incluye el padding dentro del ancho total */
 }
 
-/* Estilo de los campos al recibir focus */
 input:focus {
     border-color: #f04d23;
 }
 
-/* Estilo para el botón de submit */
 button[type="submit"] {
     display: block;
     width: 100%;
@@ -67,12 +64,10 @@ button[type="submit"] {
     margin-top: 10px;
 }
 
-/* Efecto hover para el botón */
 button[type="submit"]:hover {
     background-color: #c43b1b;
 }
 
-/* Estilo de advertencia en campos incompletos */
 .error {
     border-color: #ff4d4d !important;
     background-color: #2e2e2e;
@@ -83,6 +78,7 @@ button[type="submit"]:hover {
     font-size: 0.85rem;
     margin-top: 5px;
 }
+
 
 
 
